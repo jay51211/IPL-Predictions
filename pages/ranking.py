@@ -22,8 +22,6 @@ with c2:
     with c3:
         if st.button("🔮 Predictions"):
             st.switch_page("pages/prediction.py")
-st.divider()
-
 
 st.subheader("🏆 IPL Team Rankings")
 
@@ -153,4 +151,5 @@ def n_bar():
             st.dataframe(bowler_run_rank)
 
     st.divider()
+
 n_bar()
