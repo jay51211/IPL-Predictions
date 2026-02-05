@@ -74,7 +74,7 @@ The project demonstrates **data engineering, feature engineering, machine learni
 | File | Description |
 |-----|------------|
 | `matches.csv` | Match-level IPL data |
-| `deliveries.csv` | Ball-by-ball IPL data (25.7 MB) |
+| `deliveries.csv` | Ball-by-ball IPL data |
 | `batsman_match_stats.csv` | Latest batsman rolling stats |
 | `bowler_latest_stats.csv` | Latest bowler rolling stats |
 
