@@ -19,10 +19,11 @@ def load_data():
     with open("bowler_model.pkl", "rb") as f:
         bowler_model = pickle.load(f)
 
-    return batsman_model, match_model, bowler_model, 
+    return batsman_model, match_model, bowler_model
 
-batsman_model, match_model, bowler_model, = load_data()
+batsman_model, match_model, bowler_model = load_data()
 
+@st.cache_data
 def load_df():
     batsman_df = pd.read_csv("batsman_match_stats.csv")
     bowler_df = pd.read_csv("bowler_latest_stats.csv")
@@ -101,4 +102,5 @@ st.caption(
     "They do not guarantee actual match results."
 
 )
+
 
