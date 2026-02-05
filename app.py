@@ -1,27 +1,11 @@
 import pandas as pd
 import streamlit as st
-import pickle
-
-from pages.ranking import deliveries_df
 
 st.set_page_config(
     page_title="IPL Performance Predictor",
     layout="wide",
     page_icon="🏏"
 )
-
-@st.cache_resource
-def load_data():
-    with open("model.pkl", "rb") as f:
-        batsman_model = pickle.load(f)
-    with open("match_pred.pkl", "rb") as f:
-        match_model = pickle.load(f)
-    with open("bowler_model.pkl", "rb") as f:
-        bowler_model = pickle.load(f)
-
-    return batsman_model, match_model, bowler_model
-
-batsman_model, match_model, bowler_model = load_data()
 
 @st.cache_data
 def load_df():
@@ -102,5 +86,6 @@ st.caption(
     "They do not guarantee actual match results."
 
 )
+
 
 
