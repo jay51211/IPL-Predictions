@@ -7,6 +7,20 @@ st.set_page_config(
     page_icon="🏏"
 )
 
+st.markdown(
+    """
+    <style>
+    [data-testid="stSidebar"] {
+        display: none;
+    }
+    [data-testid="stAppViewContainer"] {
+        margin-left: 0;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 @st.cache_data
 def load_df():
     batsman_df = pd.read_csv("batsman_match_stats.csv")
@@ -85,6 +99,7 @@ st.caption(
     "They do not guarantee actual match results."
 
 )
+
 
 
 
