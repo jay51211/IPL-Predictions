@@ -8,7 +8,7 @@ st.set_page_config(
     page_icon="🏏"
 )
 
-@st.cache_data
+@st.cache_resource
 def load_data():
     with open("model.pkl", "rb") as f:
         batsman_model = pickle.load(f)
@@ -16,12 +16,19 @@ def load_data():
         match_model = pickle.load(f)
     with open("bowler_model.pkl", "rb") as f:
         bowler_model = pickle.load(f)
+
+    return batsman_model, match_model, bowler_model
+
+batsman_model, match_model, bowler_model = load_data()
+
+@st.cache_data
+def load_df():
     batsman_df = pd.read_csv("batsman_match_stats.csv")
     bowler_df = pd.read_csv("bowler_latest_stats.csv")
 
-    return batsman_model, match_model, bowler_model, batsman_df, bowler_df
+    return batsman_df, bowler_df
 
-batsman_model, match_model, bowler_model, batsman_df, bowler_df = load_data()
+batsman_df, bowler_df = load_df()
 
 c1, c2 = st.columns([4, 3])
 with c1:
@@ -127,4 +134,5 @@ with c3:
     if submit:
         wickets = predict_bowler(bowler_model, avg5, avg10, batting_team, venue)
         pred_wickets = int(round(wickets))
+
         st.success(f"🎯 Predicted Wickets: **{pred_wickets}**")
