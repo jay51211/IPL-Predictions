@@ -45,7 +45,6 @@ with c2:
     with c3:
         if st.button("🔮 Predictions"):
             st.switch_page("pages/prediction.py")
-st.divider()
 
 def predict_match_winner(model, team1, team2, venue, toss_winner, toss_decision):
     X = pd.DataFrame([{
@@ -136,3 +135,4 @@ with c3:
         pred_wickets = int(round(wickets))
 
         st.success(f"🎯 Predicted Wickets: **{pred_wickets}**")
+
