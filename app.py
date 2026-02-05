@@ -32,7 +32,6 @@ with c2:
     with c3:
         if st.button("🔮 Predictions"):
             st.switch_page("pages/prediction.py")
-st.divider()
 
 st.subheader("🏏 IPL Analytics & Performance Prediction Platform")
 
@@ -86,6 +85,7 @@ st.caption(
     "They do not guarantee actual match results."
 
 )
+
 
 
 
