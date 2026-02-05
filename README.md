@@ -3,6 +3,10 @@
 An **end-to-end Machine Learning & Data Analytics application** built on **IPL (Indian Premier League)** data.  
 This project provides **interactive analytics dashboards, team & player rankings, and ML-based predictions** using **Streamlit**.
 
+
+🔗 **Live App**:  
+👉 https://ipl-predictions-ytddudnshpqg3sa5sqwqcx.streamlit.app/
+
 ---
 
 ## Project Overview
