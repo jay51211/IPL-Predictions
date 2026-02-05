@@ -7,6 +7,20 @@ st.set_page_config(
     page_icon="🏏"
 )
 
+st.markdown(
+    """
+    <style>
+    [data-testid="stSidebar"] {
+        display: none;
+    }
+    [data-testid="stAppViewContainer"] {
+        margin-left: 0;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 c1, c2 = st.columns([4, 3])
 with c1:
     st.title("🏏 IPL Performance Predictor")
@@ -153,3 +167,4 @@ def n_bar():
     st.divider()
 
 n_bar()
+
