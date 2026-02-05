@@ -10,7 +10,7 @@ st.set_page_config(
     page_icon="🏏"
 )
 
-@st.cache_data
+@st.cache_resource
 def load_data():
     with open("model.pkl", "rb") as f:
         batsman_model = pickle.load(f)
@@ -18,14 +18,19 @@ def load_data():
         match_model = pickle.load(f)
     with open("bowler_model.pkl", "rb") as f:
         bowler_model = pickle.load(f)
+
+    return batsman_model, match_model, bowler_model, 
+
+batsman_model, match_model, bowler_model, = load_data()
+
+def load_df():
     batsman_df = pd.read_csv("batsman_match_stats.csv")
     bowler_df = pd.read_csv("bowler_latest_stats.csv")
     match_df = pd.read_csv("matches.csv")
     deliveries_df = pd.read_csv("deliveries.csv")
+    return batsman_df, bowler_df, match_df, deliveries_df
 
-    return batsman_model, match_model, bowler_model, batsman_df, bowler_df, match_df, deliveries_df
-
-batsman_model, match_model, bowler_model, batsman_df, bowler_df, match_df, deliveries_df = load_data()
+batsman_df, bowler_df, match_df, deliveries_df = load_df()
 
 c1, c2 = st.columns([4, 3])
 with c1:
@@ -96,3 +101,4 @@ st.caption(
     "They do not guarantee actual match results."
 
 )
+
