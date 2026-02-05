@@ -1,6 +1,5 @@
 import pandas as pd
 import streamlit as st
-import plotly.express as px
 import pickle
 
 from pages.ranking import deliveries_df
@@ -95,4 +94,5 @@ The models learn patterns from past data to estimate future outcomes.
 st.caption(
     "⚠️ Predictions are based on historical data (2008 - 2024) and statistical patterns. "
     "They do not guarantee actual match results."
+
 )
