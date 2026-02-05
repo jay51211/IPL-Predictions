@@ -8,6 +8,20 @@ st.set_page_config(
     page_icon="🏏"
 )
 
+st.markdown(
+    """
+    <style>
+    [data-testid="stSidebar"] {
+        display: none;
+    }
+    [data-testid="stAppViewContainer"] {
+        margin-left: 0;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 @st.cache_resource
 def load_data():
     with open("model.pkl", "rb") as f:
@@ -135,4 +149,5 @@ with c3:
         pred_wickets = int(round(wickets))
 
         st.success(f"🎯 Predicted Wickets: **{pred_wickets}**")
+
 
