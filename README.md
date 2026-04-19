@@ -12,8 +12,8 @@ Covers SQL-based analysis, exploratory data analysis, ML predictions, and a full
 > These insights were extracted from 900+ IPL matches and 200,000+ ball-by-ball delivery records.
 
 - 🏆 **Mumbai Indians** dominate all-time with the highest win count across IPL seasons — nearly 40% more wins than the 3rd-placed team
-- 🪙 **Toss advantage is overrated** — teams winning the toss win the match only ~51% of the time, barely better than a coin flip
-- 🏃 **Fielding first wins more** — teams that win the toss and choose to field have a higher win rate (~55%) than those who choose to bat
+- 🪙 **Toss advantage is overrated** — teams winning the toss win the match only 50.9% of the time, barely better than a coin flip
+- 🏃 **Fielding first wins more** — teams that win the toss and choose to field have a higher win rate (54%) than those who choose to bat
 - 📈 **Wankhede & Chinnaswamy are batting-friendly** — average first-innings scores at these venues are consistently 10–15 runs above the IPL average
 - 🎯 **Death overs (16–20) decide matches** — over 60% of match results are determined by performance in the last 5 overs
 - 🏏 **Virat Kohli leads all-time run charts** with 6000+ runs, but AB de Villiers holds the highest strike rate among batsmen with 1000+ balls faced
