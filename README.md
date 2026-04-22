@@ -1,114 +1,141 @@
-# 🏏 IPL Analytics & Match Intelligence Platform
+# 🏏 IPL Performance Predictor
 
-An end-to-end **Data Analytics + Machine Learning** project on Indian Premier League data (2008–2022).
-Covers SQL-based analysis, exploratory data analysis, ML predictions, and a fully deployed interactive web app.
+> An end-to-end sports analytics and machine learning application built on Indian Premier League data — featuring interactive dashboards, player/team rankings, and live ML-powered predictions.
 
-🔗 **Live App → [Open on Streamlit](https://ipl-predictions-ytddudnshpqg3sa5sqwqcx.streamlit.app/)**
-
----
-
-## 📌 Key Business Insights
-
-> These insights were extracted from 900+ IPL matches and 200,000+ ball-by-ball delivery records.
-
-- 🏆 **Mumbai Indians** dominate all-time with the highest win count across IPL seasons — nearly 40% more wins than the 3rd-placed team
-- 🪙 **Toss advantage is overrated** — teams winning the toss win the match only 50.9% of the time, barely better than a coin flip
-- 🏃 **Fielding first wins more** — teams that win the toss and choose to field have a higher win rate (54%) than those who choose to bat
-- 📈 **Wankhede & Chinnaswamy are batting-friendly** — average first-innings scores at these venues are consistently 10–15 runs above the IPL average
-- 🎯 **Death overs (16–20) decide matches** — over 60% of match results are determined by performance in the last 5 overs
-- 🏏 **Virat Kohli leads all-time run charts** with 6000+ runs, but AB de Villiers holds the highest strike rate among batsmen with 1000+ balls faced
-- 🎳 **Lasith Malinga** is the most economical bowler at death overs across his career — economy under 8.0 in overs 17–20
-- 📍 **Home advantage is real but small** — home teams win ~54% of matches, strongest at Eden Gardens and Wankhede
+🔗 **[Live App → Try it now](https://ipl-predictions-ytddudnshpqg3sa5sqwqcx.streamlit.app/)**
 
 ---
 
-## 🎯 What This Project Does
+## 🧩 Problem Statement
 
-| Module | Description |
-|---|---|
-| 📊 Analytics Dashboard | Interactive charts — team wins, toss impact, top players, venue stats |
-| 🏅 Rankings | Team & player leaderboards by runs, wickets, sixes, economy |
-| 🤖 Match Prediction | Predicts match winner given two teams, venue, toss outcome |
-| 🏏 Batsman Predictor | Predicts runs a batsman will score using rolling averages |
-| 🎳 Bowler Predictor | Predicts wickets a bowler will take in upcoming match |
-| 🗄️ SQL Analysis | 25 business questions answered with pure SQL queries |
+Sports analytics is one of the fastest-growing fields in data science. IPL generates millions of data points every season, but most fans and analysts lack tools to make sense of it. This project answers three core questions:
 
----
+1. **Which team is most likely to win a given match?** (based on venue, toss, and opponent)
+2. **How many runs will a batsman score in their next game?** (based on recent form)
+3. **How many wickets will a bowler take?** (based on rolling performance metrics)
 
-## 🗄️ SQL Analysis Highlights
-
-Full SQL file: [`ipl_sql_analysis.sql`](./ipl_sql_analysis.sql)
-
-25 queries covering:
-- Tournament overview & season-wise trends
-- Team win rates & home vs away analysis
-- Toss impact on match results
-- Top batsmen by runs, strike rate, average
-- Top bowlers by wickets, economy, dot ball %
-- Venue analysis — best chasing venues, highest scoring grounds
-- **Window functions** — season-wise ranking, cumulative runs, running totals
+Beyond predictions, the app surfaces analytical insights from historical IPL data that reveal what actually wins matches — not just intuition.
 
 ---
 
-## 🤖 Machine Learning Models
+## 🔍 Key Analytical Insights
 
-| Model | Task | Algorithm |
+### 🏆 What Wins Matches?
+- **Toss winners who choose to field first** win matches at a higher rate — suggesting chasing is the preferred strategy in T20
+- **Home venue advantage is real** — teams playing at their home ground consistently outperform away records
+- **Top 3 teams by wins** dominate disproportionately, suggesting sustained squad depth matters more than individual seasons
+
+### 🏏 Batting Patterns
+- **Rolling form (last 5 matches)** is a stronger predictor of next-game runs than career averages — current form beats history
+- The **top 10 batsmen** account for a disproportionate share of total tournament runs, highlighting how T20 is driven by a few match-winners
+- **Six-hitting ability** correlates strongly with high-scoring innings, not just strike rate
+
+### 🎳 Bowling Patterns
+- **Economy rate over recent games** is more predictive of wickets than career bowling average
+- **Death-over bowlers** show high variance — making them harder to predict but critical to model separately
+
+---
+
+## 💡 Business / Strategic Recommendations
+
+1. **Teams should prioritize fielding first after winning the toss** — data consistently supports this as the higher win-probability decision
+2. **Player auction strategy should weight recent form (last 5–10 matches) over career stats** — form-based features outperform historical averages in predictions
+3. **Invest in top-order batsmen with high six-hitting rates** — these players drive the most match-winning innings
+4. **Schedule home fixtures during critical knockout phases** — home advantage is a statistically significant factor
+
+---
+
+## 🚀 App Features
+
+### 📊 Home Dashboard
+- Top teams by wins, total runs, and sixes
+- Toss impact analysis on match results
+- Home vs away win breakdown
+- Top 10 batsmen, bowlers, fielders, and six-hitters
+
+### 🏅 Rankings
+- Team rankings by wins, runs, and sixes
+- Batsman rankings by total runs (mapped to latest team)
+- Bowler rankings by performance metrics
+
+### 🤖 Predictions
+| Prediction | Inputs | Model |
 |---|---|---|
-| Match Winner | Classification | Random Forest Classifier |
-| Batsman Runs | Regression | Random Forest Regressor |
-| Bowler Wickets | Regression | Random Forest Regressor |
-
-**Feature Engineering:**
-- Rolling averages over last 5 and 10 matches per player
-- Toss decision encoding
-- Venue and team label encoding
-- Historical head-to-head win rates
+| Match Winner | Team 1, Team 2, Venue, Toss Winner, Toss Decision | Classification |
+| Batsman Runs | Player name, rolling form stats | RandomForest Regressor |
+| Bowler Wickets | Player name, recent economy & form | RandomForest Regressor |
 
 ---
 
-## 📊 Dashboard Previews
+## 📊 Datasets Used
 
-### Team & Match Insights
-![Top Teams by Wins](./images/top_10_teams_by_wins.jpg)
-![Total Runs by Teams](./images/total_runs_by_teams.jpg)
-![Toss Winner Impact](./images/toss_winner.jpg)
-![Home vs Away Wins](./images/home_vs_away_wins.jpg)
-
-### Player Performance
-![Top 10 Batsmen](./images/top_10_batsman.jpg)
-![Top 10 Bowlers](./images/top_10_bowlers.jpg)
-![Top Fielders](./images/top_10_catchers.jpg)
-![Top Six Hitters](./images/top_10_sixer.jpg)
-
----
-
-## 🗂️ Dataset
-
-| File | Rows | Description |
-|---|---|---|
-| `matches.csv` | ~950 | Match-level data — teams, venue, toss, result |
-| `deliveries.csv` | ~200,000 | Ball-by-ball data — batsman, bowler, runs, dismissals |
-
-Source: [IPL Dataset on Kaggle](https://www.kaggle.com/datasets/patrickb1912/ipl-complete-dataset-20082020)
+| File | Description |
+|------|-------------|
+| `matches.csv` | Match-level IPL data (results, venues, toss outcomes) |
+| `deliveries.csv` | Ball-by-ball delivery data for all matches |
+| `batsman_match_stats.csv` | Engineered rolling stats per batsman |
+| `bowler_latest_stats.csv` | Engineered rolling stats per bowler |
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Category | Tools |
-|---|---|
-| Language | Python, SQL |
+| Area | Tools |
+|------|-------|
 | Data Analysis | Pandas, NumPy |
+| Feature Engineering | Rolling averages (last 5 & 10 matches), encoding |
+| Machine Learning | Scikit-learn (RandomForest, Classification Pipeline) |
 | Visualization | Matplotlib, Seaborn |
-| Machine Learning | Scikit-learn |
-| SQL Engine | SQLite / MySQL / PostgreSQL |
-| Web App | Streamlit |
-| Deployment | Streamlit Cloud |
+| Deployment | Streamlit (multi-page app) |
+| Model Serialization | Pickle |
 | Version Control | Git & GitHub |
 
 ---
 
-## 🚀 Run Locally
+## 🏗️ Project Structure
+
+```
+IPL-Predictions/
+│
+├── app.py                        # Main Streamlit app entry point
+├── pages/                        # Multi-page Streamlit structure
+│   ├── rankings.py               # Team & player rankings page
+│   └── predictions.py            # ML prediction page
+├── ipl.ipynb                     # EDA + feature engineering + model training
+├── matches.csv                   # Match-level dataset
+├── deliveries.csv                # Ball-by-ball dataset
+├── batsman_match_stats.csv       # Engineered batsman features
+├── bowler_latest_stats.csv       # Engineered bowler features
+├── model.pkl                     # Trained match prediction model
+├── match_pred.pkl                # Match prediction pipeline
+├── bowler_model.pkl              # Bowler wickets prediction model
+├── images/                       # Dashboard screenshots
+├── requirements.txt              # Python dependencies
+└── README.md
+```
+
+---
+
+## 📸 Screenshots
+
+### Team & Match Insights
+| Top Teams by Wins | Total Runs by Teams |
+|---|---|
+| ![Top Teams](images/top_10_teams_by_wins.jpg) | ![Total Runs](images/total_runs_by_teams.jpg) |
+
+### Toss Analysis
+| Toss Impact | Toss Win vs Match Win |
+|---|---|
+| ![Toss Winner](images/toss_winner.jpg) | ![Toss vs Match](images/toss_win_match_win.jpg) |
+
+### Player Performance
+| Top Batsmen | Top Bowlers |
+|---|---|
+| ![Batsmen](images/top_10_batsman.jpg) | ![Bowlers](images/top_10_bowlers.jpg) |
+
+---
+
+## ⚙️ Run Locally
 
 ```bash
 # Clone the repo
@@ -118,42 +145,23 @@ cd IPL-Predictions
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the app
+# Launch the app
 streamlit run app.py
 ```
 
-For SQL analysis, load `matches.csv` and `deliveries.csv` into your SQL engine and run `ipl_sql_analysis.sql`.
-
 ---
 
-## 📁 Project Structure
+## 🔮 Future Improvements
 
-```
-IPL-Predictions/
-├── app.py                    # Main Streamlit app
-├── pages/                    # Multi-page Streamlit sections
-├── ipl_sql_analysis.sql      # 25 SQL queries for business analysis
-├── ipl.ipynb                 # Full EDA + model training notebook
-├── model.pkl                 # Match winner model
-├── bowler_model.pkl          # Bowler wickets model
-├── match_pred.pkl            # Match prediction pipeline
-├── batsman_match_stats.csv   # Engineered batsman features
-├── bowler_latest_stats.csv   # Engineered bowler features
-├── matches.csv               # Raw match data
-├── deliveries.csv            # Raw ball-by-ball data
-├── images/                   # Dashboard screenshots
-└── requirements.txt
-```
+- Add player vs player head-to-head analysis
+- Incorporate live match data via IPL API for real-time predictions
+- Add confidence scores to match winner predictions
+- Introduce a fantasy team recommendation engine based on predicted form
 
 ---
 
 ## 👤 Author
 
 **Jay Kumbhar**
-- GitHub: [@jay51211](https://github.com/jay51211)
-- LinkedIn: [jaykumbhar5121](https://linkedin.com/in/jaykumbhar5121)
-- Email: jaykumbhar518@gmail.com
-
----
-
-⭐ If you found this useful, give it a star!
+📧 jaykumbhar518@gmail.com
+💼 [LinkedIn](https://linkedin.com/in/jaykumbhar5121) | 💻 [GitHub](https://github.com/jay51211)
